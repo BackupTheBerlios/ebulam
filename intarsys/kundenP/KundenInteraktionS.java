@@ -1,5 +1,8 @@
 /* $id§ */
 /* $Log: KundenInteraktionS.java,v $
+/* Revision 1.3  2002/05/25 05:21:48  malube
+/* Cmd (Andi) implementiert
+/*
 /* Revision 1.2  2002/05/25 05:07:51  malube
 /* Dateikopf fuer Cvs bei allen java-Files hinzugefuegt
 /* */
@@ -27,6 +30,7 @@ public class KundenInteraktionS extends HttpServlet {
         /** Variable, die angibt, ob die eingegebenen Daten mit den Werten aus
             Datenbank &uuml;bereinstimmen. Mit false vorinitialisiert */
         boolean dataIsOk = false;
+        private static final String command = "cmd";
 //Methoden
         /** Methode, um ein KundeBean zu erzeugen mit zwei Attributen:
             userId und pass */
@@ -35,6 +39,7 @@ public class KundenInteraktionS extends HttpServlet {
               KundeBean einKunde = new KundeBean(userId, pass);
               return einKunde;
        }
+
        /** Methode checkLoginData(KundeBean) &uuml;berpr&uuml;ft Username und
            Passwort des Kunden mit Daten aus der Datenbank. */
        public static boolean checkLoginData(KundeBean einKunde){
@@ -50,13 +55,32 @@ public class KundenInteraktionS extends HttpServlet {
        public void doPost(HttpServletRequest request,
                       HttpServletResponse response)
                throws ServletException, IOException {
-               einKunde = createKundeBean(USERID, PASS);
+
+
+
+      /*   switch (request.getParameter("cmd")) {
+         case login       :
+
+         case "news"        :      ;
+         case "produkte"    :      ;
+         case "support"     :      ;
+         case "newsletter"  :      ;
+         case "seminare"    :      ;
+         case "kontakt"     :     ;
+         case "kundendaten" :      ;
+*/
+       if (request.getParameter("cmd").equals("login")){
+               einKunde = createKundeBean(request.getParameter("userId"),request.getParameter("pass"));
                dataIsOk = checkLoginData(einKunde);
-               request.setAttribute(KUNDE_REQUEST, einKunde);
+               String cc = request.getParameter("cmd");
+               System.out.println(cc);
+              /* request.setAttribute(KUNDE_REQUEST, einKunde);
                request.setAttribute("PASSWORT",passAusDb);
-               request.setAttribute("USERID",userIdAusDb);
+               request.setAttribute("USERID",userIdAusDb);*/
                getServletConfig().getServletContext().
                getRequestDispatcher("/frontend/jsp/home.jsp").
                                      forward(request, response);
+          }
+
        }
-}
+}}
