@@ -1,3 +1,9 @@
+/* $id§ */
+/* $Log: KundenStamm.java,v $
+/* Revision 1.2  2002/05/25 05:07:51  malube
+/* Dateikopf fuer Cvs bei allen java-Files hinzugefuegt
+/* */
+
 package kundenP;
 
 import java.util.TreeSet;

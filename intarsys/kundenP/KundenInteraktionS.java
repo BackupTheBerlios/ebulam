@@ -1,3 +1,8 @@
+/* $id§ */
+/* $Log: KundenInteraktionS.java,v $
+/* Revision 1.2  2002/05/25 05:07:51  malube
+/* Dateikopf fuer Cvs bei allen java-Files hinzugefuegt
+/* */
 package kundenP;
 import javax.servlet.*;
 import javax.servlet.http.*;
