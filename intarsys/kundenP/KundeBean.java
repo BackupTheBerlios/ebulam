@@ -1,5 +1,8 @@
 /* $id$ */
 /* $Log: KundeBean.java,v $
+/* Revision 1.6  2002/05/28 20:09:22  mast0024
+/* Geburtsdatum eingefügt und Attribute von Adresse geändert
+/*
 /* Revision 1.5  2002/05/27 17:31:10  malube
 /* Versuch mit zeitgleichen aenderungen
 /*
@@ -19,7 +22,6 @@ import kundenP.Adresse.*;
  */
 public class KundeBean implements Serializable {
 
-// Des isch nur dummes gelaber
 
 // Attribute
    private String userId = "";
@@ -28,6 +30,14 @@ public class KundeBean implements Serializable {
    private String vorname = "";
    private Adresse anschrift;
    private String anrede;
+
+   private Datum gebDat;
+
+   private String telefon;
+   private String fax;
+   private String email;
+   private String url;
+
    private String versuch="";
    private InfMail_Liste[] infomails;
    private NL_Liste[] newsletters;
@@ -57,6 +67,27 @@ public class KundeBean implements Serializable {
       this.anschrift = new Adresse( land,  plz,  strasseHausnr, ort);
       this.aboNl = aboNl;
    }
+
+
+    public KundeBean(String userId, String pass, String vorname, String nachname,String land, String plz,
+                     String strasseHausnr, String ort, String anr, String tel, String fax, String email,
+                     String url, int tag, int monat, int jahr, String[] aboNl) {
+
+      super();
+      this.userId = userId;
+      this.pass = pass;
+      this.vorname = vorname;
+      this.nachname = nachname;
+      this.anschrift = new Adresse( land,  plz,  strasseHausnr, ort);
+      this.anrede = anr;
+      this.gebDat = new Datum(tag, monat, jahr);
+      this.telefon = tel;
+      this.fax = fax;
+      this.email = email;
+      this.url = url;
+      this.aboNl = aboNl;
+   }
+
 
    public String getVersuch() {
       return versuch;
@@ -95,6 +126,16 @@ public class KundeBean implements Serializable {
     public void setAnrede(String anrede){
             this.anrede = anrede;
     }
+
+    public Datum getGebDat(){
+            return gebDat;
+    }
+
+    public void setGebDat(Datum gd){
+            this.gebDat = gd;
+    }
+
+
     public Adresse getAnschrift(){
             return anschrift;
     }
@@ -102,6 +143,43 @@ public class KundeBean implements Serializable {
     public void setAnschrift(Adresse anschrift){
             this.anschrift = anschrift;
     }
+
+
+
+    public String getTelefon(){
+            return telefon;
+    }
+
+    public void setTelefon(String telefon){
+            this.telefon = telefon;
+    }
+
+    public String getFax(){
+            return fax;
+    }
+
+    public void setFax(String fax){
+            this.fax = fax;
+    }
+
+    public String getEmail(){
+            return email;
+    }
+
+    public void setEmail(String email){
+            this.email = email;
+    }
+
+    public String getUrl(){
+            return url;
+    }
+
+    public void setUrl(String url){
+            this.url = url;
+    }
+
+
+
     public InfMail_Liste[] getInfomails(){
             return infomails;
     }
