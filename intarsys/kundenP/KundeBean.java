@@ -1,5 +1,8 @@
 /* $id$ */
 /* $Log: KundeBean.java,v $
+/* Revision 1.4  2002/05/27 16:25:46  malube
+/* Konstruktoren erweitert, Attribut aboNl[] hinzugefuegt
+/*
 /* Revision 1.3  2002/05/25 19:28:02  malube
 /* Attribute  (InfoMail[], Newsletter[],SemiListe[]) und Get- und Setmethoden geschrieben
 /*
@@ -10,7 +13,7 @@
 package kundenP;
 
 import java.io.Serializable;
-
+import kundenP.Adresse.*;
 /**
  * @stereotype entitiy
  */
@@ -27,6 +30,7 @@ public class KundeBean implements Serializable {
    private InfMail_Liste[] infomails;
    private NL_Liste[] newsletters;
    private Semi_Liste[] seminare;
+   private String[] aboNl;
    // Konstruktoren
 
    public KundeBean() {
@@ -40,6 +44,18 @@ public class KundeBean implements Serializable {
       this.vorname = vorname;
       this.nachname = nachname;
    }
+   public KundeBean(String userId, String pass, String vorname, String nachname,String land, String plz, String
+    strasseHausnr, String ort, String[] aboNl) {
+
+      super();
+      this.userId = userId;
+      this.pass = pass;
+      this.vorname = vorname;
+      this.nachname = nachname;
+      this.anschrift = new Adresse( land,  plz,  strasseHausnr, ort);
+      this.aboNl = aboNl;
+   }
+
    public String getVersuch() {
       return versuch;
    }
@@ -107,6 +123,14 @@ public class KundeBean implements Serializable {
     public void setSeminare(Semi_Liste[] seminare){
             this.seminare = seminare;
     }
+
+    public String[] getAboNl() {
+      return aboNl;
+   }
+   public void setAboNl(String[] aboNl) {
+      this.aboNl = aboNl;
+   }
+
 
 
    public String toString() {
