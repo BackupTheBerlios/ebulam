@@ -1,5 +1,8 @@
 /* $id$ */
 /* $Log: Adresse.java,v $
+/* Revision 1.3  2002/05/28 20:10:21  mast0024
+/* einige Attribute zu KundeBean verschoben
+/*
 /* Revision 1.2  2002/05/27 17:05:59  malube
 /* Konstruktoren erweitert
 /*
@@ -13,9 +16,6 @@ package kundenP;
  * @stereotype primitive
  */
 public class Adresse {
-
-
-
 
 
    public Adresse() {
@@ -65,6 +65,7 @@ public class Adresse {
             this.ort = ort;
     }
 
+/*
     public String getTelefon(){
             return telefon;
     }
@@ -96,13 +97,16 @@ public class Adresse {
     public void setUrl(String url){
             this.url = url;
     }
+    */
 
     private String land;
     private String plz;
     private String strasseHausnr;
     private String ort;
+    /*
     private String telefon;
     private String fax;
     private String email;
     private String url;
+    */
 }
