@@ -1,7 +1,10 @@
 /* $id$ */
 /* $Log: Adresse.java,v $
-/* Revision 1.1  2002/05/26 04:03:14  malube
-/* Initial revision
+/* Revision 1.2  2002/05/27 17:05:59  malube
+/* Konstruktoren erweitert
+/*
+/* Revision 1.1.1.1  2002/05/26 04:03:14  malube
+/*
 /* */
 
 package kundenP;
@@ -18,19 +21,16 @@ public class Adresse {
    public Adresse() {
       super();
    }
-   
+
    public Adresse(String land, String plz, String strasseHausnr,
-                        String ort, String telefon, String fax, String email, String url) {
+                        String ort) {
 
       super();
       this.land = land;
       this.plz = plz;
       this.strasseHausnr = strasseHausnr;
       this.ort = ort;
-      this.telefon = telefon;
-      this.fax = fax;
-      this.email = email;
-      this.url = url;
+
    }
 
     public String getLand(){
@@ -49,7 +49,7 @@ public class Adresse {
             this.plz = plz;
     }
 
-    public String getStrasseHausnr(){
+    public String  getstrasseHausnr(){
             return strasseHausnr;
     }
 
