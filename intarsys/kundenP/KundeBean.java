@@ -1,7 +1,7 @@
 /* $id$ */
 /* $Log: KundeBean.java,v $
-/* Revision 1.4  2002/05/27 16:25:46  malube
-/* Konstruktoren erweitert, Attribut aboNl[] hinzugefuegt
+/* Revision 1.5  2002/05/27 17:31:10  malube
+/* Versuch mit zeitgleichen aenderungen
 /*
 /* Revision 1.3  2002/05/25 19:28:02  malube
 /* Attribute  (InfoMail[], Newsletter[],SemiListe[]) und Get- und Setmethoden geschrieben
@@ -18,6 +18,8 @@ import kundenP.Adresse.*;
  * @stereotype entitiy
  */
 public class KundeBean implements Serializable {
+
+// Des isch nur dummes gelaber
 
 // Attribute
    private String userId = "";
