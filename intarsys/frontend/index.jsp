@@ -1,5 +1,5 @@
 <jsp:root xmlns:jsp="http://java.sun.com/JSP/Page" version="1.2" >
-<!-- DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.0 Transitional//EN" -->
+<!--DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.0 Transitional//EN"-->
 <HTML>
       <HEAD>
 
@@ -76,6 +76,7 @@ TYPE="PASSWORD" NAME="pass" VALUE="" SIZE="8" MAXLENGTH="8"/></FONT></TD>
                                         <TD ALIGN="RIGHT" WIDTH="79">
 <P ALIGN="RIGHT"/>
                                         </TD>
+                                          <input type="hidden" name="cmd" value="login"/>
                                         <TD WIDTH="81">
 <P/><FONT SIZE="-1"><INPUT
 TYPE="SUBMIT" NAME="Schaltfläche1" VALUE="Login" ID="Schaltflaeche1"/></FONT></TD>
