@@ -1,5 +1,8 @@
 /* $id$ */
 /* $Log: KundenInteraktionS.java,v $
+/* Revision 1.5  2002/05/27 16:21:31  malube
+/* Abtrennung der einzelnen Gebiete nach Command
+/*
 /* Revision 1.4  2002/05/25 19:19:52  malube
 /* Session hinzugefuegt,Bean ist im gesamten Projekt verfuegbar
 /*
@@ -32,9 +35,19 @@ public class KundenInteraktionS extends HttpServlet {
         /** Methode, um ein KundeBean zu erzeugen mit zwei Attributen:
          *  userId und pass
          */
-        public static KundeBean createKundeBean(String userId, String pass, String vorname, String nachname){
+        public static KundeBean createKundeBean(String userId, String pass, String vorname, String nachname,String land,
+        String plz, String strasseHausnr, String ort) {
 
-              KundeBean einKunde = new KundeBean(userId, pass,vorname,nachname);
+              String[] gesetzt = new String[6];
+              gesetzt[0] = "";
+              gesetzt[1] = "checked";
+              //einKunde.setAboNl(gesetzt);
+              //Funktioniert
+              //String[] versuch = einKunde.getAboNl();
+
+              KundeBean einKunde = new KundeBean(userId, pass,vorname,nachname,land,  plz,  strasseHausnr, ort, gesetzt);
+
+
               return einKunde;
        }
 
@@ -55,10 +68,9 @@ public class KundenInteraktionS extends HttpServlet {
         */
        public static KundeBean fillBean(KundeBean einKunde){
 
-              //einKunde.setNachname("BlaBla");
-              //einKunde.setVorname("BluBlu");
-              //einKunde.setCheckboxNl("checked");
+
               return einKunde;
+
 
        }
 
@@ -72,11 +84,12 @@ public class KundenInteraktionS extends HttpServlet {
                       HttpServletResponse response)
                throws ServletException, IOException {
 
-
+//*********************LOGIN**********************************************
               if (request.getParameter("cmd").equals("login")){
 
                  KundeBean einKunde = createKundeBean(request.getParameter("userId"),
-                                                request.getParameter("pass"),"Johann", "Bergen");
+                                                request.getParameter("pass"),"Johann", "Bergen","BRD","76889","STR.2",
+                                                "Kleinort");
 
                  dataIsOk = checkLoginData(einKunde);
 
@@ -97,5 +110,67 @@ public class KundenInteraktionS extends HttpServlet {
                  getRequestDispatcher("/frontend/jsp/home.jsp").
                  forward(request, response);
               }
+
+//*********************KUNDENDATEN*****************************************
+
+                if (request.getParameter("cmd").equals("kundendaten")){
+
+               System.out.println("geil");
+               String name = request.getParameter("vorname");
+               System.out.println(name);
+               String nname = request.getParameter("nachname");
+               System.out.println(nname);
+               String postlz = request.getParameter("plz");
+               System.out.println(postlz);
+               String wort = request.getParameter("wohnort");
+               System.out.println(wort);
+               String strHnr = request.getParameter("strasseHausnr");
+               System.out.println(strHnr);
+//Hier müsste dann der Datenbankzugriff erfolgen
+
+// Umstellung auf Session
+
+               /*  HttpSession session = request.getSession();
+                 session.setAttribute(KUNDE_REQUEST, derKunde);*/
+// Weiterleitung
+
+                 getServletConfig().getServletContext().
+                 getRequestDispatcher("/frontend/jsp/home.jsp").
+                 forward(request, response);
+              }
+//*********************PRODUKTE********************************************
+//verwendete Methoden:
+
+                          if (request.getParameter("cmd").equals("produkte")){
+
+                 }
+
+
+//*********************SUPPORT*********************************************
+//verwendete Methoden:
+
+                          if (request.getParameter("cmd").equals("support")){
+
+                 }
+
+//*********************NEWSLETTER******************************************
+//verwendete Methoden:
+
+                          if (request.getParameter("cmd").equals("newsletter")){
+
+                 }
+
+//*********************SEMINARE********************************************
+//verwendete Methoden:
+
+                          if (request.getParameter("cmd").equals("seminare")){
+
+                 }
+
+
        }
+
+
+
+
 }
